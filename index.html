@@ -1,47 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charity: Water</title>
+  <!-- Proxima Nova from Adobe Fonts -->
+  <link rel="stylesheet" href="https://use.typekit.net/dbq6lkx.css">
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // This script adds animation to the button when clicked
+    // After the animation, the button stays blue for 5 seconds, then goes back to brown
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.querySelector('.button');
+      var holdTimeout; // To store the timeout ID
+      if (btn) {
+        btn.addEventListener('click', function(e) {
+          // Remove any previous animation or hold state
+          btn.classList.remove('cleaning', 'button-hold');
+          void btn.offsetWidth; // Force reflow to restart animation
+          btn.classList.add('cleaning');
+        });
+        btn.addEventListener('animationend', function(e) {
+          if (e.animationName === 'clean-water-color') {
+            btn.classList.remove('cleaning');
+            btn.classList.add('button-hold'); // Stay blue/white
+            // Remove hold after 5 seconds
+            clearTimeout(holdTimeout);
+            holdTimeout = setTimeout(function() {
+              btn.classList.remove('button-hold');
+            }, 5000);
+          }
+        });
+      }
+    });
+  </script>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
-
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
-
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
-        </div>
-    </section>
-
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+  <!-- Navbar with logo -->
+  <nav class="navbar">
+    <img src="img/cw_logo-2.png" alt="charity: water logo" class="navbar-logo" />
+  </nav>
+  <div class="hero">
+    <div class="hero-content">
+      <h1>
+        JOIN THE<br />
+        CLEAN WATER<br />
+        GENERATION.
+      </h1>
+      <p class="mission">
+        EVERY DOLLAR YOU GIVE GOES DIRECTLY TO CLEAN WATER PROJECTS,<br />
+        WITH TRANSPARENCY AS CLEAR AS THE WATER YOU HELP PROVIDE.
+      </p>
+      <p class="call-to-action">
+        LET’S BE THE GENERATION THAT PUTS AN
+        <span class="highlight">END TO DIRTY WATER.</span>
+      </p>
+      <a href="#" class="button">CLICK HERE TO CLEAN WATER</a>
+    </div>
+  </div>
 </body>
 </html>
